@@ -37,13 +37,17 @@ public class SoundManager : MonoBehaviour {
 	void OnLevelWasLoaded (int sceneId) {
 		Debug.Log (sceneId);
 		switch (sceneId) {
+		case 3:
+			playClip (0);
+			audioSource.volume = 0.2f;
+			break;
 		case 1:
 		case 2:
-		case 3:
 		case 4:
 		case 5:
 			// play background music.
 			playClip(0);
+			audioSource.volume = 0.8f;		
 			break;
 		case 6:
 			stopMusic ();
