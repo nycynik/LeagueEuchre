@@ -43,7 +43,7 @@ public class MainMenuController : MonoBehaviour {
 		// Load the first level!
 		Cursor.SetCursor(null, Vector2.zero, cursorMode);
 
-		Application.LoadLevel("Game");
+		Application.LoadLevel("lobby");
 	}
 	
 	public void QuitGame() {

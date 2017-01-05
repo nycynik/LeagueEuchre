@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour {
 	}
 	
 	public void LoadScene(string scene) {
+		Debug.Log ("LM:Load Scene " + scene);
 		SceneManager.LoadScene (scene);
 	}
 
