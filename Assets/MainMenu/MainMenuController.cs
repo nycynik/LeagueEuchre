@@ -34,7 +34,7 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	private IEnumerable LoadLevel() {
-		AsyncOperation async = Application.LoadLevelAsync("outside");
+		AsyncOperation async = SceneManager.LoadSceneAsync("outside");
 		yield return async;
 		Debug.Log ("MM:Loading Level");	
 	}
@@ -43,7 +43,7 @@ public class MainMenuController : MonoBehaviour {
 		// Load the first level!
 		Cursor.SetCursor(null, Vector2.zero, cursorMode);
 
-		Application.LoadLevel("lobby");
+		SceneManager.LoadScene("lobby");
 	}
 	
 	public void QuitGame() {
@@ -59,13 +59,13 @@ public class MainMenuController : MonoBehaviour {
 	public void ShowMainMenu() {
 		// Load the first level!
 		Cursor.SetCursor(cursorTexture, Vector2.zero, cursorMode);
-		Application.LoadLevel("main");
+		SceneManager.LoadScene("main");
 
 	}
 
 	public void JumpToLevel(string levelName) {
 		// Load the first level!
-		Application.LoadLevel(levelName);
+		SceneManager.LoadScene(levelName);
 	}
 
 }

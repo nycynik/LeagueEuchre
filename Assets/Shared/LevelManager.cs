@@ -15,8 +15,13 @@ public class LevelManager : MonoBehaviour {
 	}
 	
 	public void LoadScene(string scene) {
-		Debug.Log ("LM:Load Scene " + scene);
-		SceneManager.LoadScene (scene);
+//		Scene sceneTest = SceneManager.GetSceneByName (scene);
+//		if (sceneTest.IsValid ()) {
+			Debug.Log ("LM:Load Scene " + scene);
+			SceneManager.LoadScene (scene);
+//		} else {
+//			Debug.LogError ("LM:Load Scene attempt to load Invalid Scene " + scene);
+//		}
 	}
 
 	public void Quit() {
