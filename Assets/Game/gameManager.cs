@@ -42,10 +42,40 @@ public class gameManager : MonoBehaviour {
 	private void drawHand (int player) {
 		GameObject p = PlayerHandGameObjects [player];
 
-		foreach (Hand h in PlayerHands) {
-			foreach (PlayingCard c in h.pile) {
-				Debug.Log(c.ToString ());
+//		Transform t = p.transform.FindChild ("Card1");
+//		if (t) {
+//			Debug.Log ("card 1 = " + t.gameObject.name);
+//			SpriteRenderer srender = t.GetComponent<SpriteRenderer> ();
+//			srender.sprite = cards [3];
+//		}
+
+		int idx = 0;
+
+		foreach (Transform c in p.transform) {
+
+			// find correct sprite
+			PlayingCard pc = PlayerHands[player].GetCardAt(idx);
+			string assetName = string.Format("DeckOfCards_{0}_{1}", (int)(pc.Suit), pc.Rank);  // Example:  "Card_1_10" would be the Jack of Hearts.
+			bool found = false;
+			Sprite theirCard = null;
+			foreach(Sprite card_in_deck in cards) {
+				if (card_in_deck.name == assetName) {
+					theirCard = card_in_deck;
+					found = true;	
+					break;
+				}
 			}
+
+			GameObject cardInHand = c.gameObject; 
+			if (cardInHand && found) {				
+				CardScript cs = cardInHand.GetComponent<CardScript> ();
+				cs.SetSprite (theirCard);
+			} else {
+				Debug.Log ("GameManager::DrawHand-Can not find card to display " + assetName);
+			}
+
+			idx++;
+
 		}
 
 	}
@@ -72,7 +102,7 @@ public class gameManager : MonoBehaviour {
 							cards.Add (trickDeck.TakeTopCard ());							
 						}
 						PlayerHands [p].AddCards (cards);
-						if (p == 0) {
+						if ((p ==1) || (p == 0)) {
 							drawHand (0);
 						}
 					}

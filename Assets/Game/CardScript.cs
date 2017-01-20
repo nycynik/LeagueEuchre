@@ -23,7 +23,7 @@ public class CardScript : MonoBehaviour {
 	void Update () {
 		
 	}
-
+		
 	void FlipCard() {
 		showing = !showing;
 		if (!showing) {
@@ -32,5 +32,12 @@ public class CardScript : MonoBehaviour {
 			sr.sprite = front;
 		}
 		Invoke ("FlipCard", 1);
+	}
+
+	public void SetSprite(Sprite sp) {
+		front = sp;
+		if (showing) {
+			sr.sprite = front;
+		}
 	}
 }

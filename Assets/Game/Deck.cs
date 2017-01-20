@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 public enum SuitEnum {
 	Hearts=0,
-	Diamonds = 1,
-	Clubs=2,
+	Clubs=1,
+	Diamonds = 2,
 	Spades=3,
 }
 
@@ -50,6 +49,22 @@ public class CardSet {
 		pile.AddRange (cards);
 	}
 
+	public override string ToString() {
+		string ret = "";
+		foreach (PlayingCard p in pile) {
+			ret += "[" + p.ToString () + "] ";
+		}
+
+		return ret;
+	}
+
+	public PlayingCard GetCardAt(int index) {
+		PlayingCard p = null;
+		if (index < pile.Count) {
+			p = pile[index];
+		}
+		return p;
+	}
 }
 
 /***
